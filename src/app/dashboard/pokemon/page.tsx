@@ -26,7 +26,7 @@ export default async function PokemonsPage() {
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
             width={100}
             height={100}
-            alt="name"
+            alt={pokemon.name}
           />
         ))}
       </div>
