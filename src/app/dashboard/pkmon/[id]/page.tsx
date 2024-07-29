@@ -1,7 +1,18 @@
 import { Tokemon } from "@/app/pokemons/interfaces/pokemon";
+import { Metadata } from "next";
+import { MdRampRight } from "react-icons/md";
 
 interface Props {
   params: { id: string };
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id, name } = await getPokemon(params.id);
+
+  return {
+    title: `#${id} - ${name}`,
+    description: `Pagina del Pokemon ${name}`,
+  };
 }
 
 const getPokemon = async (id: string): Promise<Tokemon> => {
@@ -19,7 +30,7 @@ export default async function PkmonPage({ params }: Props) {
 
   return (
     <div>
-      <h1>{JSON.stringify(pokemon)}</h1>
+      <h1>{pokemon.name}</h1>
     </div>
   );
 }
