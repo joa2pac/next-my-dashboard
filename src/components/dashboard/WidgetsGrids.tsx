@@ -1,15 +1,20 @@
-import { IoCafeOutline } from "react-icons/io5";
+"use client";
+
+import { IoCartOutline } from "react-icons/io5";
 import { SimpleWidget } from "./SimpleWidget";
+import { useAppSelector } from "@/store";
 
 export const WidgetsGrids = () => {
+  const isCart = useAppSelector((state) => state.counter.count);
+
   return (
     <div className="flex flex-wrap p-2 items-center justify-center">
       <SimpleWidget
-        title={"Titulo 1"}
+        title={`${isCart}`}
         href="dashboard/counter"
-        subTitle="subtitle"
-        icon={<IoCafeOutline size={50} className="text-blue-500" />}
-        label="Label 1"
+        subTitle={"Productos agregados"}
+        icon={<IoCartOutline size={70} className="text-blue-600" />}
+        label={"Contador"}
       />
     </div>
   );
